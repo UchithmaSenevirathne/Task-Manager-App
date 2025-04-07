@@ -1,1 +1,69 @@
-<p>signup works!</p>
+<div class="container d-flex align-items-center justify-content-center vh-100 ">
+    <div class="card p-5 border-0 " style="max-width: 500px; width: 100%;">
+      <h2 class="text-center fw-normal mb-2" style="color: #472fc8;">Sign Up</h2>
+      <p class="text-center text-muted mb-5">
+        Hey enter your details to sign up your Account
+      </p>
+  
+      <form [formGroup]="signupForm" class="d-flex flex-column align-items-center">
+        <div class="mb-3 input-group border rounded" style="height: 50px;">
+          <span class="input-group-text bg-white border-0">
+            <mat-icon>person</mat-icon>
+          </span>
+          <input
+            placeholder="Enter your username or email"
+            class="form-control border-0"
+            formControlName="username"
+            type="email"
+            required
+          />
+        </div>
+  
+        <div class="mb-3 input-group border rounded" style="height: 50px;">
+          <span class="input-group-text bg-white border-0">
+            <mat-icon>lock</mat-icon>
+          </span>
+          <input
+            placeholder="Enter your password"
+            formControlName="password"
+            class="form-control border-0"
+            [type]="hidePassword ? 'password' : 'text'"
+            required
+          />
+          <button class="btn" type="button" (click)="togglePasswordVisibility()">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </div>
+  
+        <div class="mb-4 input-group border rounded" style="height: 50px;">
+          <span class="input-group-text bg-white border-0">
+            <mat-icon>lock</mat-icon>
+          </span>
+          <input
+            placeholder="Confirm Password"
+            formControlName="confirmPassword"
+            class="form-control border-0"
+            [type]="hidePassword ? 'password' : 'text'"
+            required
+          />
+          <button class="btn" type="button" (click)="togglePasswordVisibility()">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </div>
+  
+        <div class="d-grid w-100">
+          <button class="btn fw-bold" style="height: 50px; background-color: #472fc8; color: white;" type="submit">
+            Sign Up
+          </button>
+        </div>
+
+        <div class="d-inline-flex mt-3">
+            <p class="text-center text-muted">
+                Already have an account ? 
+            </p>
+            <a style="color: #472fc8; cursor: pointer;">Sign In</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  

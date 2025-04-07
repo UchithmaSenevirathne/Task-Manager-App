@@ -12,7 +12,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     RouterLink,
-    RouterOutlet
+    RouterOutlet,
   ],
   exports: [
     CommonModule,
