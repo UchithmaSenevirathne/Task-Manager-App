@@ -27,5 +27,10 @@ export class SignupComponent {
 
   togglePasswordVisibility(): void {
     this.hidePassword = !this.hidePassword;
+  } 
+
+  signup(){
+    console.log(this.signupForm.value)
   }
 }
+

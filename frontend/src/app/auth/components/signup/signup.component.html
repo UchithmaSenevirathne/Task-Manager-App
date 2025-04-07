@@ -52,7 +52,7 @@
         </div>
   
         <div class="d-grid w-100">
-          <button class="btn fw-bold" style="height: 50px; background-color: #472fc8; color: white;" type="submit">
+          <button class="btn fw-bold" style="height: 50px; background-color: #472fc8; color: white;" type="submit" (click)="signup()">
             Sign Up
           </button>
         </div>
@@ -61,7 +61,7 @@
             <p class="text-center text-muted">
                 Already have an account ? 
             </p>
-            <a style="color: #472fc8; cursor: pointer;">Sign In</a>
+            <a style="color: #472fc8; cursor: pointer;" routerLink="/login">Sign In</a>
         </div>
       </form>
     </div>
