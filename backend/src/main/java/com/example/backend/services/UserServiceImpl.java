@@ -1,17 +1,18 @@
-package com.example.backend.services.impl;
+package com.example.backend.services;
 
 import com.example.backend.dtos.UserDTO;
 import com.example.backend.entities.User;
 import com.example.backend.repositories.UserRepository;
-import com.example.backend.services.UserService;
 import com.example.backend.util.Mapping;
 import com.example.backend.util.VarList;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,6 +30,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     private Mapping mapping;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public int saveUser(UserDTO userDTO) {
         if (userRepository.existsByUsername(userDTO.getUsername())) {
@@ -42,14 +46,20 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username){
+    public UserDTO loadUserDetailsByUsername(String username){
+        User user = userRepository.findByUsername(username);
+        return mapping.convertToUserDTO(user);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User userEntity = userRepository.findByUsername(username);
         return new org.springframework.security.core.userdetails.User(userEntity.getUsername(), userEntity.getPassword(), getAuthority(userEntity));
     }
 
-    private Set<SimpleGrantedAuthority> getAuthority(User user) {
+    private Set<SimpleGrantedAuthority> getAuthority(User userEntity) {
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
-        authorities.add(new SimpleGrantedAuthority(user.getUsername()));
+        authorities.add(new SimpleGrantedAuthority(userEntity.getUsername()));
         return authorities;
     }
 }
