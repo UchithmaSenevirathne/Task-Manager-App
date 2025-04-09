@@ -1,6 +1,8 @@
 package com.example.backend.util;
 
+import com.example.backend.dtos.TaskDTO;
 import com.example.backend.dtos.UserDTO;
+import com.example.backend.entities.Task;
 import com.example.backend.entities.User;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -26,5 +28,18 @@ public class Mapping {
 
     public List<UserDTO> convertToUserDTOList(List<User> userEntityList) {
         return modelMapper.map(userEntityList, new TypeToken<List<UserDTO>>() {}.getType());
+    }
+
+    //task mappings
+    public TaskDTO convertToTaskDTO(Task taskEntity) {
+        return modelMapper.map(taskEntity, TaskDTO.class);
+    }
+
+    public Task convertToTaskEntity(TaskDTO taskDTO) {
+        return modelMapper.map(taskDTO, Task.class);
+    }
+
+    public List<TaskDTO> convertToTaskDTOList(List<Task> taskEntityList) {
+        return modelMapper.map(taskEntityList, new TypeToken<List<TaskDTO>>() {}.getType());
     }
 }
