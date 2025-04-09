@@ -1,1 +1,21 @@
+<nav
+  class="navbar bg-light px-5 py-3 d-flex justify-content-between align-items-center"
+  *ngIf="isLoggedIn"
+>
+  <div class="d-flex align-items-center">
+    <span class="h4 mb-0 fw-bold fs-3" style="margin-right: 100px;">TaskSync.</span>
+    <div class="text-muted small">
+      Welcome,<br />
+      <span class="fw-bold text-dark fs-5">Uchithma Senevirathne</span>
+    </div>
+  </div>
+  <div class="d-flex align-items-center gap-3">
+    <button>
+      <mat-icon style="font-size: 25px;">notifications_none</mat-icon>
+    </button>
+    <button (click)="logout()">
+      <mat-icon style="color:crimson; font-size: 25px;" >logout</mat-icon>
+    </button>
+  </div>
+</nav>
 <router-outlet></router-outlet>
