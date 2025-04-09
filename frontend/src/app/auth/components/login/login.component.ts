@@ -44,10 +44,14 @@ export class LoginComponent {
       console.log("response", res);
       if(res.code === 201){
         console.log(res)
-        console.log(res.data.username)
-        console.log(res.data.token)
+        
         StorageService.saveUserName(res.data.username);
         StorageService.saveToken(res.data.token)
+
+        if(StorageService.isLoggedIn()){
+          this.router.navigateByUrl("/user/task")
+        }
+        
       }else{
         this.snackbar.open("Invalid Credentials", "Close", {duration:5000, panelClass: 'error-snackbar'})
       }

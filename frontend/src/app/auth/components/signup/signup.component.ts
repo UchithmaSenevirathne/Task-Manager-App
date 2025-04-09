@@ -54,7 +54,7 @@ export class SignupComponent {
       console.log("response", res);
       if(res.code === 201){
         this.snackbar.open("Signup successfull", "Close", {duration:5000});
-        this.router.navigateByUrl("/login")
+        this.router.navigateByUrl("")
       }else{
         this.snackbar.open("Signup failed", "Close", {duration:5000, panelClass: 'error-snackbar'})
       }
