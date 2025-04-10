@@ -39,7 +39,7 @@ public class WebSecurityConfig {
                 .csrf(csrf -> csrf.disable()) // Disable CSRF for stateless APIs
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/backend/user/register", "/backend/user/authenticate", "backend/user/",
-                                 "/backend/task/", "/backend/task/update/{taskId}")
+                                 "/backend/task/", "/backend/task/update/{taskId}", "/backend/task/all_tasks", "/backend/task/get/{taskId}", "/backend/task/delete/{taskId}")
                         .permitAll()
                         .anyRequest()
                         .authenticated())

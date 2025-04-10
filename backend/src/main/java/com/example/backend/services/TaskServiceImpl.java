@@ -1,8 +1,8 @@
 package com.example.backend.services;
 
+import com.example.backend.customeObj.TaskResponse;
 import com.example.backend.dtos.TaskDTO;
 import com.example.backend.entities.Task;
-import com.example.backend.enums.Status;
 import com.example.backend.exceptions.NotFoundException;
 import com.example.backend.repositories.TaskRepository;
 import com.example.backend.util.Mapping;
@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -37,6 +38,30 @@ public class TaskServiceImpl implements TaskService{
             tmpTaskEntity.get().setDescription(taskDTO.getDescription());
             tmpTaskEntity.get().setStatus(taskDTO.getStatus());
             tmpTaskEntity.get().setCreatedAt(taskDTO.getCreatedAt());
+        }
+    }
+
+    @Override
+    public List<TaskDTO> getAllTasks() {
+        return mapping.convertToTaskDTOList(taskRepository.findAll());
+    }
+
+    @Override
+    public TaskResponse getSelectedTask(Long taskId) {
+        if (taskRepository.existsById(taskId)) {
+            return mapping.convertToTaskDTO(taskRepository.getReferenceById(taskId));
+        }else{
+            throw new NotFoundException("Task not found");
+        }
+    }
+
+    @Override
+    public void deleteTask(Long taskId) {
+        Optional<Task> findId = taskRepository.findById(taskId);
+        if(!findId.isPresent()){
+            throw new NotFoundException("Task not found");
+        }else {
+            taskRepository.deleteById(taskId);
         }
     }
 }
