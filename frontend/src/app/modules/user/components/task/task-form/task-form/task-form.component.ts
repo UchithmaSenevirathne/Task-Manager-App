@@ -22,7 +22,8 @@ export class TaskFormComponent implements OnInit{
     title: '',
     description: '',
     status: Status.TO_DO,
-    userId:0
+    createdAt: '',
+    userId: 0
   };
 
   statusList = Object.values(Status);

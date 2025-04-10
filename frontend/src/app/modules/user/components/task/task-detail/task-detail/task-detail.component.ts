@@ -19,7 +19,7 @@ import { Task } from '../../../../../../auth/services/task/task.service';
             <p><strong>Created At:</strong> {{ task.createdAt }}</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" (click)="close.emit()">Close</button>
+            <button type="button" class="btn border-secondary" (click)="close.emit()">Close</button>
           </div>
         </div>
       </div>

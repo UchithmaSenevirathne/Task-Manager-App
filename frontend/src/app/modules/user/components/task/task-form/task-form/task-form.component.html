@@ -9,22 +9,22 @@
           <div class="modal-body">
             <div class="mb-3">
               <label>Title</label>
-              <input [(ngModel)]="formData.title" name="title" class="form-control" required />
+              <input [(ngModel)]="formData.title" name="title" class="form-control outline" required />
             </div>
             <div class="mb-3">
               <label>Description</label>
-              <textarea [(ngModel)]="formData.description" name="description" class="form-control" required></textarea>
+              <textarea [(ngModel)]="formData.description" name="description" class="form-control outline" required></textarea>
             </div>
             <div class="mb-3">
               <label>Status</label>
-              <select [(ngModel)]="formData.status" name="status" class="form-select">
-                <option *ngFor="let s of statusList" [value]="s">{{ s }}</option>
+              <select [(ngModel)]="formData.status" name="status" class="form-select outline" style="font-size: 14px;">
+                <option *ngFor="let s of statusList" [value]="s" style="font-size: 14px;">{{ s }}</option>
               </select>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" (click)="close.emit(false)">Cancel</button>
-            <button type="submit" class="btn btn-primary">{{ task ? 'Update' : 'Create' }}</button>
+            <button type="button" class="btn border-secondary" (click)="close.emit(false)">Cancel</button>
+            <button type="submit" class="btn btn-dark">{{ task ? 'Update' : 'Create' }}</button>
           </div>
         </form>
       </div>

@@ -10,13 +10,14 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { StorageService } from '../../../../../../auth/services/storage/storage.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
   providers: [TaskService],
-  imports: [TaskFormComponent, TaskDetailComponent, CommonModule, HttpClientModule],
+  imports: [TaskFormComponent, TaskDetailComponent, CommonModule, HttpClientModule, MatIconModule],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.scss',
 })

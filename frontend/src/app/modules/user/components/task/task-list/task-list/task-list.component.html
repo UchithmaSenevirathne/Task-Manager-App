@@ -1,9 +1,23 @@
 <!-- task-list.component.html -->
-<div class="container mt-4">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h4>Daily Tasks - {{ currentDate | date : "fullDate" }}</h4>
+<div class="mx-5 mt-4">
+  <div
+    class="d-flex justify-content-between align-items-center mb-3 bg-white p-3 border rounded-3"
+  >
+    <div class="d-flex">
+      <div class="d-flex flex-column border-end" style="padding-right: 100px">
+        <h4>{{ currentDate | date : "MMMM" }}</h4>
+        <h6 class="text-secondary fw-medium">
+          Today is {{ currentDate | date : "fullDate" }}
+        </h6>
+      </div>
+      <div class="d-flex align-items-center gap-3" style="padding-left: 100px">
+        <h4>Board -</h4>
+        <h6 class="text-secondary fw-medium">Daily Tasks</h6>
+      </div>
+    </div>
     <div>
-      <button class="btn btn-outline-secondary me-2" (click)="toggleFilter()">
+      <button class="btn btn-outline-secondary me-3" (click)="toggleFilter()">
+        <mat-icon class="filter-icon">filter_list</mat-icon>
         Filters
       </button>
       <button class="btn btn-dark" (click)="openCreate()">Create</button>
@@ -11,13 +25,31 @@
   </div>
 
   <div class="mb-3" *ngIf="showFilter">
-    <button class="btn btn-sm btn-primary me-2" (click)="filterBy(Status.TO_DO)">To Do</button>
-<button class="btn btn-sm btn-warning me-2" (click)="filterBy(Status.IN_PROGRESS)">In Progress</button>
-<button class="btn btn-sm btn-success" (click)="filterBy(Status.DONE)">Done</button>
-
-    <button class="btn btn-sm btn-secondary ms-2" (click)="clearFilter()">
-      Clear
+    <button class="btn btn-sm border-secondary me-2 rounded-3" (click)="clearFilter()">
+      All
     </button>
+    <button
+      class="btn btn-sm border-2 rounded-3 me-2"
+      (click)="filterBy(Status.TO_DO)"
+      style="border-color: #d5aaee"
+    >
+      To Do
+    </button>
+    <button
+      class="btn btn-sm border-2 rounded-3 me-2"
+      (click)="filterBy(Status.IN_PROGRESS)"
+      style="border-color: #b28dff"
+    >
+      In Progress
+    </button>
+    <button
+      class="btn btn-sm border-2 rounded-3"
+      (click)="filterBy(Status.DONE)"
+      style="border-color: #97a2ff"
+    >
+      Done
+    </button>
+
   </div>
 
   <div
@@ -26,23 +58,29 @@
     (click)="openDetails(task)"
   >
     <div class="d-flex justify-content-between">
-      <div>
-        <strong>{{ task.title }}</strong>
-        <div>{{ task.description }}</div>
+      <div class="d-flex align-items-center gap-5">
+        <div>
+          <strong>{{ task.title }}</strong>
+          <div>{{ task.description }}</div>
+        </div>
+        <span
+          class="badge me-2 text-black fw-medium py-2 rounded-pill"
+          style="background-color: #b28dff"
+          >{{ task.status }}</span
+        >
       </div>
       <div>
-        <span class="badge bg-secondary me-2">{{ task.status }}</span>
         <button
           class="btn btn-sm text-primary"
           (click)="openEdit(task); $event.stopPropagation()"
         >
-          ✏️
+        <mat-icon>edit</mat-icon>
         </button>
         <button
           class="btn btn-sm text-danger"
           (click)="deleteTask(task.taskId!); $event.stopPropagation()"
         >
-          🗑️
+        <mat-icon>delete</mat-icon>
         </button>
       </div>
     </div>
@@ -59,5 +97,6 @@
 <app-task-detail
   *ngIf="showDetailModal && selectedTask"
   [task]="selectedTask"
-  (close)="onModalClose()">
+  (close)="onModalClose()"
+>
 </app-task-detail>

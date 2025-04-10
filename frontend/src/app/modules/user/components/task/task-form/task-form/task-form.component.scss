@@ -1,0 +1,5 @@
+.outline:focus {
+  border-color: #6c5ce7; /* Change border color on focus */
+  box-shadow: 0 0 0 0.2rem rgba(108, 92, 231, 0.25); /* Optional glow effect */
+  outline: none; /* Optional: remove default outline */
+}
