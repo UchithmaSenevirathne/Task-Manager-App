@@ -1,10 +1,11 @@
-package com.example.backend.services;
+package com.example.backend.services.impl;
 
 import com.example.backend.customeObj.TaskResponse;
 import com.example.backend.dtos.TaskDTO;
 import com.example.backend.entities.Task;
 import com.example.backend.exceptions.NotFoundException;
 import com.example.backend.repositories.TaskRepository;
+import com.example.backend.services.TaskService;
 import com.example.backend.util.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class TaskServiceImpl implements TaskService{
+public class TaskServiceImpl implements TaskService {
     @Autowired
     private TaskRepository taskRepository;
 

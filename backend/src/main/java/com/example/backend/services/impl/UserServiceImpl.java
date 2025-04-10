@@ -1,18 +1,17 @@
-package com.example.backend.services;
+package com.example.backend.services.impl;
 
 import com.example.backend.dtos.UserDTO;
 import com.example.backend.entities.User;
 import com.example.backend.repositories.UserRepository;
+import com.example.backend.services.UserService;
 import com.example.backend.util.Mapping;
 import com.example.backend.util.VarList;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,8 +29,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     private Mapping mapping;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     @Override
     public int saveUser(UserDTO userDTO) {
@@ -55,7 +52,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public Long getUserIdByEmail(String username) {
         User user = userRepository.findByUsername(username);
         if (user != null) {
-            return user.getId(); // Make sure return the correct field for the user ID
+            return user.getId();
         } else {
             throw new RuntimeException("User not found");
         }

@@ -2,10 +2,9 @@ package com.example.backend.controllers;
 
 import com.example.backend.customeObj.TaskResponse;
 import com.example.backend.dtos.TaskDTO;
-import com.example.backend.entities.Task;
 import com.example.backend.exceptions.DataPersistFailedException;
 import com.example.backend.exceptions.NotFoundException;
-import com.example.backend.services.TaskServiceImpl;
+import com.example.backend.services.impl.TaskServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

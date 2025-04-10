@@ -1,6 +1,6 @@
 package com.example.backend.config;
 
-import com.example.backend.services.UserServiceImpl;
+import com.example.backend.services.impl.UserServiceImpl;
 import com.example.backend.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

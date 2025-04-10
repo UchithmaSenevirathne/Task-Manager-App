@@ -26,9 +26,6 @@ public class Mapping {
         return modelMapper.map(userDTO, User.class);
     }
 
-    public List<UserDTO> convertToUserDTOList(List<User> userEntityList) {
-        return modelMapper.map(userEntityList, new TypeToken<List<UserDTO>>() {}.getType());
-    }
 
     //task mappings
     public TaskDTO convertToTaskDTO(Task taskEntity) {

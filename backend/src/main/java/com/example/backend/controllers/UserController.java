@@ -3,7 +3,7 @@ package com.example.backend.controllers;
 import com.example.backend.dtos.AuthDTO;
 import com.example.backend.dtos.ResponseDTO;
 import com.example.backend.dtos.UserDTO;
-import com.example.backend.services.UserServiceImpl;
+import com.example.backend.services.impl.UserServiceImpl;
 import com.example.backend.util.JwtUtil;
 import com.example.backend.util.VarList;
 import org.springframework.http.HttpStatus;
