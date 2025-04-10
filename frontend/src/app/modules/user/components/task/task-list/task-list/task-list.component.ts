@@ -56,7 +56,6 @@ export class TaskListComponent implements OnInit {
   }
 
   filterBy(status: Status) {
-    // this.filter = status;
     this.activeFilter = status;
     this.filteredTasks = this.tasks.filter((t) => t.status === status);
   }
@@ -66,7 +65,6 @@ export class TaskListComponent implements OnInit {
   }
 
   clearFilter() {
-    // this.filter = null;
     this.activeFilter = 'All';
     this.filteredTasks = [...this.tasks];
   }
