@@ -65,7 +65,9 @@
         </div>
         <span
           class="badge me-2 text-black fw-medium py-2 rounded-pill"
-          style="background-color: #b28dff"
+          [ngStyle]="{
+            'background-color': getStatusColor(task.status)
+          }"
           >{{ task.status }}</span
         >
       </div>

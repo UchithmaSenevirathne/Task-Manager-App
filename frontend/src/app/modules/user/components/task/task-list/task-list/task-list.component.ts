@@ -95,4 +95,17 @@ export class TaskListComponent implements OnInit {
       this.taskService.deleteTask(taskId).subscribe(() => this.loadTasks());
     }
   }
+
+  getStatusColor(status: string): string {
+    switch (status) {
+      case 'TO_DO':
+        return '#d5aaee';  // Color for TO_DO
+      case 'IN_PROGRESS':
+        return '#b28dff';  // Color for IN_PROGRESS
+      case 'DONE':
+        return '#97a2ff';  // Color for DONE
+      default:
+        return '#b28dff';  // Default color, in case the status doesn't match
+    }
+  }
 }

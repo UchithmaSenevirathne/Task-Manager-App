@@ -1,32 +1,27 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from '../../../../../../auth/services/task/task.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-task-detail',
-  template: `
-    <div class="modal show d-block" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Task Details</h5>
-            <button type="button" class="btn-close" (click)="close.emit()"></button>
-          </div>
-          <div class="modal-body">
-            <p><strong>ID:</strong> {{ task.taskId }}</p>
-            <p><strong>Title:</strong> {{ task.title }}</p>
-            <p><strong>Description:</strong> {{ task.description }}</p>
-            <p><strong>Status:</strong> {{ task.status }}</p>
-            <p><strong>Created At:</strong> {{ task.createdAt }}</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn border-secondary" (click)="close.emit()">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  `
+  imports: [CommonModule],
+  templateUrl: './task-detail.component.html', // Assuming this is your HTML file
 })
 export class TaskDetailComponent {
   @Input() task!: Task;
   @Output() close = new EventEmitter<void>();
+
+  // Method to get background color based on task status
+  getStatusColor(status: string): string {
+    switch (status) {
+      case 'TO_DO':
+        return '#d5aaee';  // Light purple for TO_DO
+      case 'IN_PROGRESS':
+        return '#b28dff';  // Purple for IN_PROGRESS
+      case 'DONE':
+        return '#97a2ff';  // Light blue for DONE
+      default:
+        return '#ffffff';  // Default color if no match
+    }
+  }
 }
