@@ -6,4 +6,6 @@ public interface UserService {
     int saveUser(UserDTO userDTO);
 
     UserDTO loadUserDetailsByUsername(String username);
+
+    Long getUserIdByEmail(String username);
 }

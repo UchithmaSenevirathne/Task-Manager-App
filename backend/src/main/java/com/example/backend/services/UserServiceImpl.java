@@ -52,6 +52,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
+    public Long getUserIdByEmail(String username) {
+        User user = userRepository.findByUsername(username);
+        if (user != null) {
+            return user.getId(); // Make sure return the correct field for the user ID
+        } else {
+            throw new RuntimeException("User not found");
+        }
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User userEntity = userRepository.findByUsername(username);
         return new org.springframework.security.core.userdetails.User(userEntity.getUsername(), userEntity.getPassword(), getAuthority(userEntity));

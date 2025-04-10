@@ -92,4 +92,10 @@ public class UserController {
                 .body(new ResponseDTO(VarList.Created, "User Login Success", authDTO));
 
     }
+
+    @GetMapping("/id/{username}")
+    public ResponseEntity<Long> getUserIdByUserName(@PathVariable("username") String username) {
+        Long userId = userService.getUserIdByEmail(username);
+        return ResponseEntity.ok(userId); // Send back the userId as a response
+    }
 }
