@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { provideRouter, Routes } from '@angular/router';
-import { TaskComponent } from './components/task/task.component';
+import { TaskListComponent } from './components/task/task-list/task-list/task-list.component';
 
 const routes: Routes = [
-  {path: "task", component: TaskComponent}
+  {path: "task", component: TaskListComponent}
 ]
 
 @NgModule({
