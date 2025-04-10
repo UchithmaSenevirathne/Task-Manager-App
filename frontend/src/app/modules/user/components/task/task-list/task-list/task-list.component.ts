@@ -32,7 +32,7 @@ export class TaskListComponent implements OnInit {
   showDetailModal = false;
   showFilter = false;
 
-  Status = Status; // Add this to your component class
+  Status = Status;
 
 
   constructor(private taskService: TaskService, private router: Router) {}

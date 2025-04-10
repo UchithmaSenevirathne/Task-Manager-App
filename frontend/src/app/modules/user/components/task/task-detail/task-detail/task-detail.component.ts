@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-task-detail',
   imports: [CommonModule],
-  templateUrl: './task-detail.component.html', // Assuming this is your HTML file
+  templateUrl: './task-detail.component.html',
 })
 export class TaskDetailComponent {
   @Input() task!: Task;
