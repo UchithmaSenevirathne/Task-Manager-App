@@ -1,1 +1,63 @@
-<p>task-list works!</p>
+<!-- task-list.component.html -->
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4>Daily Tasks - {{ currentDate | date : "fullDate" }}</h4>
+    <div>
+      <button class="btn btn-outline-secondary me-2" (click)="toggleFilter()">
+        Filters
+      </button>
+      <button class="btn btn-dark" (click)="openCreate()">Create</button>
+    </div>
+  </div>
+
+  <div class="mb-3" *ngIf="showFilter">
+    <button class="btn btn-sm btn-primary me-2" (click)="filterBy(Status.TO_DO)">To Do</button>
+<button class="btn btn-sm btn-warning me-2" (click)="filterBy(Status.IN_PROGRESS)">In Progress</button>
+<button class="btn btn-sm btn-success" (click)="filterBy(Status.DONE)">Done</button>
+
+    <button class="btn btn-sm btn-secondary ms-2" (click)="clearFilter()">
+      Clear
+    </button>
+  </div>
+
+  <div
+    *ngFor="let task of filteredTasks"
+    class="card mb-2 shadow-sm p-3"
+    (click)="openDetails(task)"
+  >
+    <div class="d-flex justify-content-between">
+      <div>
+        <strong>{{ task.title }}</strong>
+        <div>{{ task.description }}</div>
+      </div>
+      <div>
+        <span class="badge bg-secondary me-2">{{ task.status }}</span>
+        <button
+          class="btn btn-sm text-primary"
+          (click)="openEdit(task); $event.stopPropagation()"
+        >
+          ✏️
+        </button>
+        <button
+          class="btn btn-sm text-danger"
+          (click)="deleteTask(task.taskId!); $event.stopPropagation()"
+        >
+          🗑️
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-task-form
+  *ngIf="showFormModal"
+  [task]="selectedTask"
+  (close)="onModalClose($event)"
+>
+</app-task-form>
+
+<app-task-detail
+  *ngIf="showDetailModal && selectedTask"
+  [task]="selectedTask"
+  (close)="onModalClose()">
+</app-task-detail>

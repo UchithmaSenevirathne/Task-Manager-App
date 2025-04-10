@@ -1,1 +1,33 @@
-<p>task-form works!</p>
+<div class="modal show d-block" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form (ngSubmit)="save()">
+          <div class="modal-header">
+            <h5 class="modal-title">{{ task ? 'Edit Task' : 'New Task' }}</h5>
+            <button type="button" class="btn-close" (click)="close.emit(false)"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label>Title</label>
+              <input [(ngModel)]="formData.title" name="title" class="form-control" required />
+            </div>
+            <div class="mb-3">
+              <label>Description</label>
+              <textarea [(ngModel)]="formData.description" name="description" class="form-control" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label>Status</label>
+              <select [(ngModel)]="formData.status" name="status" class="form-select">
+                <option *ngFor="let s of statusList" [value]="s">{{ s }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="close.emit(false)">Cancel</button>
+            <button type="submit" class="btn btn-primary">{{ task ? 'Update' : 'Create' }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

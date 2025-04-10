@@ -10,15 +10,17 @@ export class StorageService {
 
   constructor() { }
 
+  static saveUserName(username: string){
+    window.localStorage.removeItem(USERNAME);
+    window.localStorage.setItem(USERNAME, username);
+  }
+
   static saveToken(token: string){
     window.localStorage.removeItem(TOKEN);
     window.localStorage.setItem(TOKEN, token);
   }
 
-  static saveUserName(username: string){
-    window.localStorage.removeItem(USERNAME);
-    window.localStorage.setItem(USERNAME, username);
-  }
+  
 
   static getToken(){
     return localStorage.getItem(TOKEN);

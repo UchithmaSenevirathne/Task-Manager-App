@@ -48,9 +48,7 @@ export class LoginComponent {
         StorageService.saveUserName(res.data.username);
         StorageService.saveToken(res.data.token)
 
-        if(StorageService.isLoggedIn()){
-          this.router.navigateByUrl("/user/task")
-        }
+        this.router.navigateByUrl("/user/task");
         
       }else{
         this.snackbar.open("Invalid Credentials", "Close", {duration:5000, panelClass: 'error-snackbar'})
