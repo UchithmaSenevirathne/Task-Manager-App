@@ -24,31 +24,49 @@
   </div>
 
   <div class="mb-3" *ngIf="showFilter">
-    <button class="btn btn-sm border-secondary me-2 rounded-3" (click)="clearFilter()">
+    <button
+      class="btn btn-sm border-secondary me-2 rounded-3"
+      (click)="clearFilter()"
+      [ngClass]="{ 'bg-secondary text-white': activeFilter === 'All' }"
+    >
       All
     </button>
     <button
       class="btn btn-sm border-2 rounded-3 me-2"
       (click)="filterBy(Status.TO_DO)"
-      style="border-color: #d5aaee"
+      [ngStyle]="{
+        'border-color': '#d5aaee',
+        'background-color':
+          activeFilter === Status.TO_DO ? '#d5aaee' : 'transparent'
+      }"
+      [ngClass]="{ 'text-white': activeFilter === Status.TO_DO }"
     >
       To Do
     </button>
     <button
       class="btn btn-sm border-2 rounded-3 me-2"
       (click)="filterBy(Status.IN_PROGRESS)"
-      style="border-color: #b28dff"
+      [ngStyle]="{
+        'border-color': '#b28dff',
+        'background-color':
+          activeFilter === Status.IN_PROGRESS ? '#b28dff' : 'transparent'
+      }"
+      [ngClass]="{ 'text-white': activeFilter === Status.IN_PROGRESS }"
     >
       In Progress
     </button>
     <button
       class="btn btn-sm border-2 rounded-3"
       (click)="filterBy(Status.DONE)"
-      style="border-color: #97a2ff"
+      [ngStyle]="{
+        'border-color': '#97a2ff',
+        'background-color':
+          activeFilter === Status.DONE ? '#97a2ff' : 'transparent'
+      }"
+      [ngClass]="{ 'text-white': activeFilter === Status.DONE }"
     >
       Done
     </button>
-
   </div>
 
   <div
@@ -75,13 +93,13 @@
           class="btn btn-sm text-primary"
           (click)="openEdit(task); $event.stopPropagation()"
         >
-        <mat-icon>edit</mat-icon>
+          <mat-icon>edit</mat-icon>
         </button>
         <button
           class="btn btn-sm text-danger"
           (click)="deleteTask(task.taskId!); $event.stopPropagation()"
         >
-        <mat-icon>delete</mat-icon>
+          <mat-icon>delete</mat-icon>
         </button>
       </div>
     </div>
