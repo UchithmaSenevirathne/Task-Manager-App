@@ -39,7 +39,7 @@ public class WebSecurityConfig {
                 .csrf(csrf -> csrf.disable()) // Disable CSRF for stateless APIs
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/backend/user/register", "/backend/user/authenticate", "backend/user/", "/backend/user/id/{username}",
-                                 "/backend/task/", "/backend/task/update/{taskId}", "/backend/task/all_tasks", "/backend/task/get/{taskId}", "/backend/task/delete/{taskId}")
+                                 "/backend/task", "/backend/task/update/{taskId}", "/backend/task/all_tasks", "/backend/task/get/{taskId}", "/backend/task/delete/{taskId}")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
@@ -51,8 +51,8 @@ public class WebSecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200/")); // Frontend origin
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "DELETE", "OPTIONS")); // Allowed HTTP methods
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200")); // Frontend origin
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")); // Allowed HTTP methods
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type")); // Allowed headers
         configuration.setExposedHeaders(Arrays.asList("Authorization")); // Expose headers if needed
         configuration.setAllowCredentials(true); // Allow credentials like cookies (if required)
